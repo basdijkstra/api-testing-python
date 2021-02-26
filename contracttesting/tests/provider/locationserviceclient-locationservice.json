@@ -1,0 +1,58 @@
+{
+  "consumer": {
+    "name": "LocationServiceClient"
+  },
+  "provider": {
+    "name": "LocationService"
+  },
+  "interactions": [
+    {
+      "description": "a request for 90210",
+      "providerState": "Location exists in database",
+      "request": {
+        "method": "get",
+        "path": "/90210"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "id": "fc763eba-0905-41c5-a27f-3934ab26786c",
+          "zip_code": "90210",
+          "country": "United States",
+          "place_name": "Beverly Hills",
+          "state": "California",
+          "active": true
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          },
+          "$.body.id": {
+            "match": "regex",
+            "regex": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+          }
+        }
+      }
+    },
+    {
+      "description": "a request for 90210",
+      "providerState": "Location does not exist in database",
+      "request": {
+        "method": "get",
+        "path": "/90210"
+      },
+      "response": {
+        "status": 404,
+        "headers": {
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

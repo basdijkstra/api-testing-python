@@ -28,7 +28,7 @@ def test_get_location():
     verifier = Verifier(provider='LocationService',
                         provider_base_url=PACT_URL)
 
-    output, logs = verifier.verify_pacts('./tests/provider/locationserviceclient-locationservice.json',
+    output, logs = verifier.verify_pacts(os.path.join(PACT_DIR, PACT_FILE),
                                          verbose=False,
                                          provider_states_setup_url="{}/_pact/provider_states".format(PACT_URL))
 

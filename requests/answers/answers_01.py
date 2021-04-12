@@ -19,10 +19,10 @@ def test_get_locations_for_us_90210_check_content_type_equals_json():
 
 # Exercise 1.3
 # Perform a GET request to http://api.zippopotam.us/us/90210
-# Check that the response body encoding is not set (equal to None)
+# Check that the response body encoding is equal to 'utf-8'
 def test_get_locations_for_us_90210_check_encoding_is_not_set():
     response = requests.get("http://api.zippopotam.us/us/90210")
-    assert response.encoding is None
+    assert response.encoding == 'utf-8'
 
 
 # Exercise 1.4
